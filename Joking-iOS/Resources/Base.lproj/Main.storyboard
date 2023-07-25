@@ -95,10 +95,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGQ-zB-usf">
                                         <rect key="frame" x="20" y="20" width="261" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ACu-rA-xNG">
+                                        <rect key="frame" x="140" y="216" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -107,20 +111,35 @@
                                     <constraint firstAttribute="trailing" secondItem="pGQ-zB-usf" secondAttribute="trailing" constant="20" id="xFL-44-w6P"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojq-an-LUh">
+                                <rect key="frame" x="46" y="657" width="301" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vHi-Nv-sKS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
+                                <connections>
+                                    <action selector="nextJokeTapped:" destination="udm-mK-Vvi" eventType="touchUpInside" id="xPI-ux-I61"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0LB-Bp-tFH"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
                             <constraint firstItem="aI2-l8-iyy" firstAttribute="centerX" secondItem="ASa-BS-QBL" secondAttribute="centerX" id="3C6-lf-axK"/>
+                            <constraint firstItem="Ojq-an-LUh" firstAttribute="top" secondItem="aI2-l8-iyy" secondAttribute="bottom" constant="30" id="DY9-VM-yGI"/>
+                            <constraint firstItem="0LB-Bp-tFH" firstAttribute="trailing" secondItem="Ojq-an-LUh" secondAttribute="trailing" constant="46" id="HDs-2M-jIO"/>
                             <constraint firstItem="aI2-l8-iyy" firstAttribute="top" secondItem="0LB-Bp-tFH" secondAttribute="top" constant="20" id="IPH-tT-peS"/>
                             <constraint firstItem="0LB-Bp-tFH" firstAttribute="bottom" secondItem="aI2-l8-iyy" secondAttribute="bottom" constant="191" id="QCe-Ux-6OW"/>
                             <constraint firstItem="aI2-l8-iyy" firstAttribute="leading" secondItem="0LB-Bp-tFH" secondAttribute="leading" constant="46" id="QQm-bB-gfu"/>
+                            <constraint firstItem="Ojq-an-LUh" firstAttribute="leading" secondItem="0LB-Bp-tFH" secondAttribute="leading" constant="46" id="Vo8-Dx-Vbf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vAJ-Z9-BIB"/>
                     <connections>
-                        <outlet property="cardView" destination="aI2-l8-iyy" id="Xq9-Fc-ZLN"/>
+                        <outlet property="cardView" destination="aI2-l8-iyy" id="Pzw-h4-fzW"/>
                         <outlet property="jokeLabel" destination="pGQ-zB-usf" id="TDt-i2-m38"/>
+                        <outlet property="loadingLabel" destination="ACu-rA-xNG" id="6YK-pm-5jp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4c-tP-S9N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ class JokesViewController: UIViewController {
     
     @IBOutlet var cardView: UIView!
     @IBOutlet var jokeLabel: UILabel!
+    @IBOutlet var loadingLabel: UIActivityIndicatorView!
     
     var category: String?
     var viewModel = JokesViewModel()
@@ -29,11 +30,11 @@ class JokesViewController: UIViewController {
     
     func setCardView() {
         self.cardView.layer.cornerRadius = 10
-        
-        
+
     }
     
     func fetch() {
+        loadingLabel.startAnimating()
         if let category = category {
             viewModel.getJoke(category: category) { [weak self] joke in
                 self?.setJoke(joke: joke.value)
@@ -43,11 +44,24 @@ class JokesViewController: UIViewController {
     
     func setJoke(joke: String) {
         DispatchQueue.main.async {
+            self.loadingLabel.stopAnimating()
+            self.loadingLabel.hidesWhenStopped = true
             self.jokeLabel.text = joke
         }
     }
     
-
+    @IBAction func nextJokeTapped(_ sender: UIButton) {
+        loadingLabel.startAnimating()
+        self.jokeLabel.text = ""
+        
+        if let category = category {
+            viewModel.getJoke(category: category) { [weak self] joke in
+                self?.setJoke(joke: joke.value)
+            }
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
