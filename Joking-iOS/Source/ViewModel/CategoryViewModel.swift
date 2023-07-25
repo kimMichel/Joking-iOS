@@ -9,24 +9,25 @@ import Foundation
 
 class CategoryViewModel {
     
-    var categories = [String](
-        arrayLiteral: "animal",
-        "career",
-        "celebrity",
-        "dev",
-        "explicit",
-        "fashion",
-        "food",
-        "history",
-        "money",
-        "movie",
-        "music",
-        "political",
-        "religion",
-        "science",
-        "sport",
-        "travel"
-        
-    )
+    var service = CategoryManager()
     
+    var categories = [String]()
+    
+    func getCategories(completion: @escaping () -> Void) {
+        
+        service.fetchData { [weak self] categories, error in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let categories = categories {
+                for item in categories {
+                    self?.categories.append(item)
+                }
+                completion()
+            }
+        }
+    }
 }
